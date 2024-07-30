@@ -37,11 +37,16 @@ class OutsideIn:
             self.turn = 'P1'
 
     def display(self):
+        status = self.status()
+
         print('--------------------')
-        print(self.board)
-        print('Turn: {}'.format(self.turn))
-        print('P1: {}, {}'.format(sum(self.P1), self.P1))
-        print('P2: {}, {}'.format(sum(self.P2), self.P2))
+        print('Initial board: {}'.format(status['Initial']))
+        print('Current board: {}'.format(status['Current']))
+        print('Current Turn: {}'.format(status['Turn']))
+        print('P1: {} -- {}'.format(status['P1_Score'], status['P1_Tiles']))
+        print('P2: {} -- {}'.format(status['P2_Score'], status['P2_Tiles']))
+        if status['Winner'] is not None:
+            print('Winner: {}'.format(status['Winner']))
     
     def status(self):
         if len(self.board) > 0:
@@ -57,6 +62,7 @@ class OutsideIn:
         return {
             'Initial': self.initboard,
             'Current': self.board,
+            'Turn': self.turn,
             'P1_Score': sum(self.P1),
             'P1_Tiles': self.P1,
             'P2_Score': sum(self.P2),
@@ -74,5 +80,3 @@ def play(Game, strat1, strat2, show = True):
             Game.take(strat2.strategy(Game))
         if show:
             Game.display()
-    if show:
-        print(Game.status())
