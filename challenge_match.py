@@ -28,7 +28,7 @@ strat2_first = {
 # Strat1 plays first
 for _ in range(matches):
     Game = OI.OutsideIn()
-    play = OI.play(Game, strat1, strat2, show = False)
+    OI.play(Game, strat1, strat2, show = False)
     result = Game.status()['Winner']
 
     if result == 'P1':
@@ -41,7 +41,7 @@ for _ in range(matches):
 # Strat2 plays first
 for _ in range(matches):
     Game = OI.OutsideIn()
-    play = OI.play(Game, strat2, strat1, show = False)
+    OI.play(Game, strat2, strat1, show = False)
     result = Game.status()['Winner']
 
     if result == 'P1':
